@@ -67,6 +67,69 @@
 
 
 
+#Programacion A
+
+# Ingreso de DNIs reales o ficticios
+dnis = [
+    "44606468",  # Persona A
+    "43150956",  # Persona B
+    "42533594"   # Persona C
+]
+
+# Generacion de conjuntos de digitos unicos mediante set()
+conjuntos = []
+for dni in dnis:
+    conjuntos.append(set(dni))
+
+# Mostrar conjuntos generados previamente, convirtiendo conjuntos en int
+print("Conjuntos generados a partir de los DNIs:")
+for i, conjunto in enumerate(conjuntos):
+    print(f"Conjunto {chr(65+i)} = {set(map(int, conjunto))}")
+
+# Calculo de operaciones entre conjuntos
+# Renombra conjuntos como A, B y C como INT
+A, B, C = conjuntos
+A = set(map(int, A))
+B = set(map(int, B))
+C = set(map(int, C))
+
+print("\nOperaciones entre conjuntos:")
+print("Union A ∪ B:", A.union(B))
+print("Interseccion A ∩ B:", A.intersection(B))
+print("Diferencia A - B:", A.difference(B))
+print("Diferencia simetrica A Δ B:", A.symmetric_difference(B))
+
+# Conteo de frecuencia de cada digito en cada DNI
+print("\nFrecuencia de digitos en cada DNI:")
+for i, dni in enumerate(dnis):
+    frecuencia = {}
+    for digito in dni:
+        frecuencia[digito] = frecuencia.get(digito, 0) + 1
+    print(f"DNI {chr(65+i)}: {frecuencia}")
+
+# Suma total de los digitos de cada DNI
+print("\nSuma total de los digitos de cada DNI:")
+for i, dni in enumerate(dnis):
+    suma = sum(map(int, dni))
+    print(f"Suma de DNI {chr(65+i)}: {suma}")
+
+# Evaluacion de condiciones logicas
+
+# Condicion 1: Digito compartido (interseccion entre todos los conjuntos)
+digitos_comunes = A & B & C 
+if digitos_comunes:
+    print("\nDigitos compartidos:", digitos_comunes)
+
+# Condicion 2: Diversidad numerica alta (algun conjunto con mas de 6 elementos)
+for i, conjunto in enumerate([A, B, C]):
+    if len(conjunto) > 6:
+        print(f"Conjunto {chr(65+i)}: Diversidad numerica alta")
+
+
+
+
+#Programacion B
+
 def es_bisiesto(anio):
     return (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0)
 
