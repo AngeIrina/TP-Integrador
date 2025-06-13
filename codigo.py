@@ -1,4 +1,4 @@
-# Parte B: Operaciones con años de nacimiento
+# TP Integrador - Programacion A y B
 
 #Programacion A
 
@@ -62,14 +62,18 @@ for i, conjunto in enumerate([A, B, C]):
 
 
 #Programacion B
+# Operaciones con años de nacimiento
 
 def es_bisiesto(anio):
+    """Determina si un año es bisiesto."""
     return (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0)
 
 def producto_cartesiano(anios, edades):
+    """Genera el producto cartesiano entre dos listas."""
     return [(anio, edad) for anio in anios for edad in edades]
 
 def cargar_lista(mensaje):
+    """Carga una lista de números enteros a partir de la entrada del usuario."""
     lista = []
     while True:
         valor = input(mensaje)
@@ -86,6 +90,7 @@ def cargar_lista(mensaje):
     return lista
 
 def main():
+    """Función principal que ejecuta el programa."""
     anios = cargar_lista("Ingrese un año de nacimiento (o 'x' para terminar): ")
     if not anios:
         print("No se ingresaron años de nacimiento. El programa terminará.")
@@ -96,9 +101,11 @@ def main():
         print("No se ingresaron edades. El programa terminará.")
         return
 
+    # Verificar que las listas de años y edades tengan la misma longitud
     if len(anios) != len(edades):
         print("Advertencia: la cantidad de años y edades no coincide.")
 
+    # Conteo de años pares e impares
     pares = 0
     impares = 0
 
